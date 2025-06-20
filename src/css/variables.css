@@ -1,0 +1,116 @@
+/* CSS Variables for charity: water Brand Colors and Game Theme */
+:root {
+    /* charity: water Brand Colors */
+    --charity-yellow: #FEDD00;
+    --charity-blue: #0288d1;
+    --charity-blue-dark: #0277bd;
+    --charity-blue-light: #4fc3f7;
+    
+    /* Game Colors */
+    --clean-water-blue: #4fc3f7;
+    --clean-water-light: #e0f7fa;
+    --clean-water-gradient: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 50%, #0288d1 100%);
+    
+    --polluted-water: #424242;
+    --polluted-water-dark: #212121;
+    --polluted-water-gradient: linear-gradient(135deg, #424242 0%, #212121 50%, #000000 100%);
+    
+    /* Status Colors */
+    --success-green: #4caf50;
+    --danger-red: #f44336;
+    --warning-orange: #ff9800;
+    
+    /* Text Colors */
+    --text-dark: #333333;
+    --text-light: #666666;
+    --text-muted: #999999;
+    
+    /* Background Colors */
+    --bg-white: #ffffff;
+    --bg-light: #f8f9fa;
+    --bg-blue-gradient: linear-gradient(135deg, #e0f7fa 0%, #b3e5fc 100%);
+    
+    /* Shadows and Effects */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
+    --shadow-charity-blue: 0 5px 15px rgba(2, 136, 209, 0.3);
+    
+    /* Game Dimensions */
+    --game-container-width: 400px;
+    --game-container-height: 600px;
+    --game-container-min-height: 500px;
+    --drop-width: 30px;
+    --drop-height: 40px;
+    --barrel-size: 60px;
+    
+    /* Animation Timings */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Z-index Layers */
+    --z-background: 1;
+    --z-game-elements: 10;
+    --z-player: 20;
+    --z-hud: 50;
+    --z-pause-btn: 60;
+    --z-overlay: 100;
+    --z-popup: 200;
+    --z-loading: 9999;
+}
+
+/* Bootstrap Custom Colors */
+.bg-charity-yellow {
+    background-color: var(--charity-yellow) !important;
+}
+
+.bg-charity-blue {
+    background-color: var(--charity-blue) !important;
+}
+
+.text-charity-blue {
+    color: var(--charity-blue) !important;
+}
+
+.text-charity-yellow {
+    color: var(--charity-yellow) !important;
+}
+
+.btn-charity-blue {
+    background-color: var(--charity-blue);
+    border-color: var(--charity-blue);
+    color: white;
+}
+
+.btn-charity-blue:hover {
+    background-color: var(--charity-blue-dark);
+    border-color: var(--charity-blue-dark);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-charity-blue);
+}
+
+.btn-charity-yellow {
+    background-color: var(--charity-yellow);
+    border-color: var(--charity-yellow);
+    color: var(--text-dark);
+}
+
+.btn-charity-yellow:hover {
+    background-color: #fdc400;
+    border-color: #fdc400;
+    color: var(--text-dark);
+    transform: translateY(-2px);
+}
+
+.btn-outline-charity-blue {
+    border-color: var(--charity-blue);
+    color: var(--charity-blue);
+}
+
+.btn-outline-charity-blue:hover {
+    background-color: var(--charity-blue);
+    border-color: var(--charity-blue);
+    color: white;
+}

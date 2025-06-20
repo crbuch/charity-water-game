@@ -1,0 +1,258 @@
+/* Game-specific Styles */
+
+/* Game Screen */
+.game-screen {
+    position: relative;
+    background: linear-gradient(180deg, var(--clean-water-light) 0%, var(--charity-blue-light) 100%);
+}
+
+/* HUD (Heads Up Display) */
+.hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--charity-yellow);
+    position: relative;
+    z-index: var(--z-hud);
+}
+
+.hud-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.hud-label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-weight: bold;
+}
+
+.hud-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.lives-container {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.heart {
+    font-size: 1.2rem;
+    transition: all var(--transition-normal);
+}
+
+.heart.lost {
+    opacity: 0.3;
+    filter: grayscale(100%);
+}
+
+/* Game Area */
+.game-area {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    cursor: crosshair;
+}
+
+/* Water Drops */
+.water-drop {
+    position: absolute;
+    width: var(--drop-width);
+    height: var(--drop-height);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+    z-index: var(--z-game-elements);
+    animation: fall linear;
+    box-shadow: var(--shadow-sm);
+}
+
+.water-drop.clean {
+    background: var(--clean-water-gradient);
+    border: 2px solid var(--charity-blue-dark);
+}
+
+.water-drop.polluted {
+    background: var(--polluted-water-gradient);
+    border: 2px solid #000;
+}
+
+.water-drop:hover {
+    transform: scale(1.1);
+}
+
+.water-drop.clicked {
+    animation: collect var(--transition-normal) ease-out forwards;
+}
+
+.water-drop.missed {
+    animation: splash var(--transition-slow) ease-out forwards;
+}
+
+/* Player Barrel */
+.player-barrel {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--barrel-size);
+    height: var(--barrel-size);
+    background: var(--bg-white);
+    border-top: 12px solid var(--charity-yellow);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    z-index: var(--z-player);
+    transition: opacity var(--transition-normal);
+}
+
+.player-barrel:hover {
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: var(--shadow-charity-blue);
+}
+
+.barrel-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.1));
+}
+
+/* Pause Button */
+.pause-btn {
+    position: absolute;
+    top: 70px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: var(--z-pause-btn);
+    transition: all var(--transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.pause-btn:hover {
+    background: var(--bg-white);
+    transform: scale(1.1);
+}
+
+/* Score Effects */
+.score-effect {
+    position: absolute;
+    color: var(--success-green);
+    font-weight: bold;
+    font-size: 1.2rem;
+    pointer-events: none;
+    z-index: 100;
+    animation: scoreFloat 1s ease-out forwards;
+}
+
+/* Game Pause State */
+.game-screen.paused .game-area {
+    pointer-events: none;
+}
+
+.game-screen.paused .water-drop {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.game-screen.paused .player-barrel {
+    opacity: 0 !important;
+    visibility: hidden;
+}
+
+/* Hide player barrel when any overlay is active */
+.screen.overlay ~ .game-screen .player-barrel,
+.game-screen:has(+ .screen.overlay.active) .player-barrel {
+    opacity: 0 !important;
+    visibility: hidden;
+}
+
+/* Force hide player barrel during overlays */
+.screen.overlay.active ~ * .player-barrel,
+.player-barrel {
+    z-index: 1;
+}
+
+.screen.overlay.active {
+    z-index: var(--z-overlay);
+}
+
+/* When pause overlay is shown, force hide barrel */
+#pause-screen.screen.overlay.active ~ #game-screen .player-barrel,
+body:has(#pause-screen.active) .player-barrel {
+    display: none !important;
+}
+
+/* Responsive Game Elements */
+@media (max-width: 480px) {
+    .hud {
+        padding: 0.5rem;
+    }
+    
+    .hud-label {
+        font-size: 0.7rem;
+    }
+    
+    .hud-value {
+        font-size: 1rem;
+    }
+    
+    .water-drop {
+        width: 25px;
+        height: 35px;
+    }
+    
+    .player-barrel {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .barrel-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .pause-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+        top: 60px;
+        right: 10px;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .water-drop {
+        animation-duration: 3s !important;
+    }
+    
+    .water-drop.clicked,
+    .water-drop.missed {
+        animation: none !important;
+        opacity: 0;
+    }
+    
+    .score-effect {
+        animation: none !important;
+    }
+}

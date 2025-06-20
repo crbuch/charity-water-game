@@ -1,0 +1,321 @@
+/* Base Styles and Layout */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('../../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px);
+    z-index: -2;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+/* Header Styles */
+.charity-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-hud);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.main-logo {
+    height: 40px;
+    max-width: 200px;
+    object-fit: contain;
+}
+
+.game-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--charity-blue);
+    margin: 0;
+}
+
+/* Header Responsive Design */
+@media (max-width: 576px) {
+    .header-content {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .game-title {
+        font-size: 1.4rem;
+    }
+    
+    .main-logo {
+        height: 35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 1.6rem;
+    }
+}
+
+/* Game Container */
+.game-container {
+    max-width: var(--game-container-width);
+    background: var(--bg-white);
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+    border-top: 12px solid var(--charity-yellow);
+    overflow: hidden;
+    min-height: var(--game-container-min-height);
+    height: var(--game-container-height);
+    max-height: calc(100vh - 140px);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 480px) {
+    .game-container {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        max-height: calc(100vh - 100px);
+        border-radius: 10px;
+    }
+}
+
+@media (max-height: 600px) {
+    .game-container {
+        height: calc(100vh - 120px);
+        min-height: 400px;
+    }
+}
+
+/* Screen Management */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    min-height: 100%;
+    overflow-y: auto;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.screen.overlay {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    z-index: var(--z-overlay);
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-loading);
+    transition: opacity var(--transition-slow);
+    border-bottom: 4px solid var(--charity-yellow);
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(51, 51, 51, 0.3);
+    border-top: 4px solid var(--text-dark);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .game-container {
+        margin: 1rem;
+        max-width: calc(100% - 2rem);
+    }
+    
+    .charity-header {
+        padding: 0.5rem !important;
+    }
+    
+    .game-title {
+        font-size: 1.5rem;
+    }
+    
+    .main-logo {
+        height: 35px;
+        max-width: 180px;
+    }
+}
+
+@media (max-height: 700px) {
+    .game-container {
+        margin: 1rem auto;
+    }
+}
+
+/* Focus Styles for Accessibility */
+button:focus,
+.water-drop:focus {
+    outline: 3px solid var(--charity-blue);
+    outline-offset: 2px;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeIn var(--transition-slow) ease-in;
+}
+
+/* Desktop Side Content Layout */
+.main-content-wrapper {
+    min-height: calc(100vh - 100px);
+    padding: 2rem 0;
+}
+
+.side-content {
+    padding: 0 1rem;
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+}
+
+.left-content {
+    padding-right: 1.5rem;
+}
+
+.right-content {
+    padding-left: 1.5rem;
+}
+
+/* Desktop Side Content Image Styling */
+.side-content img {
+    max-height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.stat-highlight .display-6 {
+    line-height: 1;
+}
+
+.mission-highlight .bi {
+    font-size: 0.875rem;
+}
+
+/* Side Content Cards */
+.impact-card,
+.community-card,
+.before-after-card,
+.progress-card {
+    transition: transform var(--transition-normal);
+    border-top: 12px solid var(--charity-yellow);
+}
+
+.impact-card:hover,
+.community-card:hover,
+.before-after-card:hover,
+.progress-card:hover {
+    transform: translateY(-5px);
+    border-top-color: var(--charity-blue);
+}
+
+.stat-highlight {
+    text-align: center;
+    background: linear-gradient(135deg, var(--charity-blue) 0%, var(--charity-blue-dark) 100%);
+    border-top: 12px solid var(--charity-yellow);
+}
+
+.mission-highlight {
+    border-top: 12px solid var(--charity-yellow);
+    border-left: 4px solid var(--charity-blue);
+}
+
+/* Ensure proper spacing for side content */
+@media (min-width: 1200px) {
+    .game-container {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    
+    .main-content-wrapper {
+        padding: 3rem 0;
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1199px) {
+    .side-content {
+        padding: 0 0.5rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .main-content-wrapper {
+        padding: 1rem 0;
+    }
+}

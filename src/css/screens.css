@@ -1,0 +1,255 @@
+/* Screen-specific Styles */
+
+/* Start Screen */
+.start-screen {
+    padding: 1rem;
+    text-align: center;
+    justify-content: flex-start;
+    align-items: stretch;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.welcome-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+    justify-content: flex-start;
+    padding: 0;
+    gap: 1.5rem;
+}
+
+.welcome-content h2 {
+    color: var(--charity-blue);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.mission-text {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.content-top {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-bottom {
+    flex: 0 0 auto;
+    width: 100%;
+    padding-bottom: 1rem;
+}
+
+/* Ensure buttons are always visible */
+.content-bottom .d-grid {
+    min-height: 120px;
+    gap: 0.75rem;
+}
+
+/* Game Over Screen */
+.game-over-screen {
+    padding: 1.5rem;
+    text-align: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.final-score-container {
+    margin-bottom: 2rem;
+}
+
+.game-over-title {
+    color: var(--charity-blue);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.final-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.score-label {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.score-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--charity-blue);
+}
+
+.impact-section {
+    background: var(--clean-water-light);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.impact-text h3 {
+    color: var(--charity-blue);
+    margin-bottom: 0.5rem;
+}
+
+.cta-section {
+    margin-bottom: 1rem;
+}
+
+.cta-section h3 {
+    color: var(--charity-blue);
+    margin-bottom: 0.5rem;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* Pause Screen */
+.pause-screen {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.pause-content {
+    padding: 1rem;
+    text-align: center;
+    max-width: 350px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100%;
+    gap: 1rem;
+}
+
+.pause-content h2 {
+    color: var(--charity-blue);
+    margin-bottom: 1rem;
+}
+
+.pause-fact {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: var(--clean-water-light);
+    border-radius: 10px;
+}
+
+/* Mission Screen */
+.mission-screen {
+    background: var(--bg-white);
+}
+
+.mission-content {
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.mission-content h2 {
+    color: var(--charity-blue);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.mission-text-content h3 {
+    color: var(--charity-blue);
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.mission-text-content p,
+.mission-text-content li {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.mission-text-content ul {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Responsive Pause Screen */
+@media (max-height: 600px) {
+    .pause-screen {
+        padding: 0.5rem;
+    }
+    
+    .pause-content {
+        padding: 0.5rem;
+        gap: 0.75rem;
+    }
+    
+    .fact-image {
+        max-height: 100px;
+    }
+}
+
+/* Responsive Screen Adjustments */
+@media (max-width: 480px) {
+    .start-screen,
+    .pause-content,
+    .mission-content,
+    .game-over-screen {
+        padding: 1rem;
+    }
+    
+    .game-over-title {
+        font-size: 1.5rem;
+    }
+    
+    .score-value {
+        font-size: 2.5rem;
+    }
+    
+    .welcome-content h2 {
+        font-size: 1.3rem;
+    }
+    
+    .mission-text {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-height: 700px) {
+    .start-screen {
+        padding: 0.75rem;
+    }
+    
+    .welcome-content {
+        gap: 1rem;
+    }
+    
+    .mission-content,
+    .game-over-content {
+        padding: 1rem;
+    }
+    
+    .feature-image {
+        max-height: 120px;
+    }
+    
+    .game-stats-preview {
+        margin-bottom: 1rem !important;
+    }
+    
+    .content-bottom .d-grid {
+        min-height: 100px;
+        gap: 0.5rem;
+    }
+}
