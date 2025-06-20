@@ -8,7 +8,7 @@ window.GameComponents = {
                 <div class="welcome-content">
                     <div class="content-top">
                         <div class="mb-3">
-                            <img src="../images/pictures/clean_water/677x464px.png" 
+                            <img src="./images/pictures/clean_water/677x464px.png" 
                                  alt="Clean water access" class="feature-image">
                         </div>
                         <h2 class="text-charity-blue mb-3">Help Provide Clean Water Access</h2>
@@ -75,7 +75,7 @@ window.GameComponents = {
 
                 <!-- Player Barrel -->
                 <div class="player-barrel">
-                    <img src="../images/logo_4x5.png" alt="Collection Barrel" class="barrel-icon">
+                    <img src="./images/logo_4x5.png" alt="Collection Barrel" class="barrel-icon">
                 </div>
 
                 <!-- Pause Button -->
@@ -94,7 +94,7 @@ window.GameComponents = {
                     <h2 class="text-charity-blue mb-3">Game Paused</h2>
                     <p class="mb-4">Take a moment to reflect on the impact of clean water access.</p>
                     <div class="pause-fact bg-light rounded p-3 mb-4">
-                        <img src="../images/pictures/dirty_source_clean_water/617x604px.png" 
+                        <img src="./images/pictures/dirty_source_clean_water/617x604px.png" 
                              alt="Water transformation" class="fact-image mb-3">
                         <p class="fact-text mb-0">💡 charity: water has funded over 91,000 water projects in 29 countries.</p>
                     </div>
@@ -132,7 +132,7 @@ window.GameComponents = {
                         <!-- Impact Section -->
                         <div class="impact-section bg-light rounded p-3 mb-4">
                             <div class="text-center mb-3">
-                                <img src="../images/pictures/portraits/779x1020px.png" 
+                                <img src="./images/pictures/portraits/779x1020px.png" 
                                      alt="Community member" class="impact-image">
                             </div>
                             <div class="impact-text text-center">
@@ -191,7 +191,7 @@ window.GameComponents = {
                         <h2 class="text-charity-blue text-center mb-4">About charity: water</h2>
                         
                         <div class="mission-story">
-                            <img src="../images/pictures/dirty_source_clean_water/1114x604px.png" 
+                            <img src="./images/pictures/dirty_source_clean_water/1114x604px.png" 
                                  alt="Water transformation story" class="mission-hero-image mb-4">
                             
                             <div class="mission-text-content">
@@ -213,7 +213,7 @@ window.GameComponents = {
                                 <h5 class="text-charity-blue">Our Impact</h5>
                                 <div class="impact-grid mb-4">
                                     <div class="impact-item mb-3">
-                                        <img src="../images/pictures/clean_water/468x302px.png" 
+                                        <img src="./images/pictures/clean_water/468x302px.png" 
                                              alt="Clean water project" class="impact-thumb me-3">
                                         <div>
                                             <strong class="text-charity-blue d-block">91,000+</strong>
@@ -221,7 +221,7 @@ window.GameComponents = {
                                         </div>
                                     </div>
                                     <div class="impact-item">
-                                        <img src="../images/pictures/portraits/546x660px.png" 
+                                        <img src="./images/pictures/portraits/546x660px.png" 
                                              alt="Community member" class="impact-thumb me-3">
                                         <div>
                                             <strong class="text-charity-blue d-block">16 million</strong>

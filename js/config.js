@@ -31,35 +31,35 @@ window.GameConfig = {
             title: "Water Warrior!",
             text: "You've collected 50 clean water drops!",
             fact: "💡 The average person in the developing world uses 2-5 gallons of water per day.",
-            image: "../images/pictures/clean_water/468x302px.png"
+            image: "./images/pictures/clean_water/468x302px.png"
         },
         {
             threshold: 100,
             title: "Clean Water Champion!",
             text: "Amazing! 100 clean drops collected!",
             fact: "💡 Americans use an average of 80-100 gallons of water per day.",
-            image: "../images/pictures/clean_water/469x552px.png"
+            image: "./images/pictures/clean_water/469x552px.png"
         },
         {
             threshold: 200,
             title: "Hope Bringer!",
             text: "Incredible! 200 drops of hope!",
             fact: "💡 Every $1 invested in water and sanitation provides a $4 economic return.",
-            image: "../images/pictures/dirty_source_clean_water/617x604px.png"
+            image: "./images/pictures/dirty_source_clean_water/617x604px.png"
         },
         {
             threshold: 300,
             title: "Life Changer!",
             text: "You're changing lives! 300 drops!",
             fact: "💡 charity: water has helped provide clean water to over 16 million people.",
-            image: "../images/pictures/dirty_source_clean_water/959x604px.png"
+            image: "./images/pictures/dirty_source_clean_water/959x604px.png"
         },
         {
             threshold: 500,
             title: "Water Hero!",
             text: "You're a true water hero! 500 drops!",
             fact: "💡 When people get access to clean water, child mortality rates drop by up to 88%.",
-            image: "../images/pictures/portraits/546x660px.png"
+            image: "./images/pictures/portraits/546x660px.png"
         }
     ],
     
