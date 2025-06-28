@@ -16,18 +16,44 @@ window.GameComponents = {
                             Collect clean water drops while avoiding polluted ones. 
                             Every point you earn represents hope for communities in need.
                         </p>
-                        <div class="game-stats-preview mb-3">
+                        
+                        <!-- Difficulty Selection -->
+                        <div class="difficulty-selection mb-4">
+                            <h5 class="text-charity-blue mb-3">Choose Difficulty:</h5>
+                            <div class="row g-1">
+                                <div class="col-4">
+                                    <button class="difficulty-btn" data-difficulty="EASY">
+                                        <strong>Easy</strong><br>
+                                        <small>5 lives • 45s</small>
+                                    </button>
+                                </div>
+                                <div class="col-4">
+                                    <button class="difficulty-btn active" data-difficulty="NORMAL">
+                                        <strong>Normal</strong><br>
+                                        <small>3 lives • 30s</small>
+                                    </button>
+                                </div>
+                                <div class="col-4">
+                                    <button class="difficulty-btn" data-difficulty="HARD">
+                                        <strong>Hard</strong><br>
+                                        <small>2 lives • 20s</small>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="game-stats-preview mb-3" id="stats-preview">
                             <div class="stat">
                                 <span class="stat-icon">🎯</span>
-                                <small>30 seconds</small>
+                                <small id="time-display">30 seconds</small>
                             </div>
                             <div class="stat">
                                 <span class="stat-icon">❤️</span>
-                                <small>3 lives</small>
+                                <small id="lives-display">3 lives</small>
                             </div>
                             <div class="stat">
-                                <span class="stat-icon">💧</span>
-                                <small>Tap clean drops</small>
+                                <span class="stat-icon">🏆</span>
+                                <small id="goal-display">200 to win</small>
                             </div>
                         </div>
                     </div>
@@ -113,19 +139,25 @@ window.GameComponents = {
 
     // Generate Game Over Screen HTML
     generateGameOverScreen() {
+        const isWin = GameState.current.isWin;
+        const title = isWin ? "🏆 Congratulations!" : "Time's Up!";
+        const titleClass = isWin ? "text-success" : "text-charity-blue";
+        
         return `
             <div id="game-over-screen" class="screen game-over-screen">
                 <div class="container-fluid p-3">
                     <div class="game-over-content">
                         <!-- Final Score Section -->
                         <div class="final-score-container text-center mb-4">
-                            <h2 id="game-over-title" class="text-charity-blue mb-3">Time's Up!</h2>
+                            <h2 id="game-over-title" class="${titleClass} mb-3">${title}</h2>
+                            ${isWin ? '<p class="text-success fw-bold mb-3">🎯 You reached the goal! Amazing work!</p>' : ''}
                             <div class="final-score mb-3">
                                 <div class="score-label text-muted">Final Score</div>
                                 <div id="final-score" class="score-value display-1 text-charity-blue fw-bold">0</div>
+                                ${isWin ? '<div class="text-success small">🏆 Goal: ' + GameState.activeDifficulty.WIN_CONDITION + ' points</div>' : ''}
                             </div>
                             <p id="score-message" class="score-message text-muted fst-italic">
-                                Every drop counts in the fight for clean water!
+                                ${isWin ? 'You\'re making a real difference in the fight for clean water!' : 'Every drop counts in the fight for clean water!'}
                             </p>
                         </div>
 
@@ -138,7 +170,7 @@ window.GameComponents = {
                             <div class="impact-text text-center">
                                 <h5 class="text-charity-blue mb-2">Your Impact</h5>
                                 <p id="impact-message" class="mb-3 small">
-                                    Thanks to players like you, charity: water continues to bring clean water to communities worldwide.
+                                    ${isWin ? 'Incredible performance! Your dedication to clean water access is inspiring.' : 'Thanks to players like you, charity: water continues to bring clean water to communities worldwide.'}
                                 </p>
                                 <div class="row">
                                     <div class="col-6">

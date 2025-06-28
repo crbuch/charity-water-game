@@ -1,10 +1,9 @@
-/* Base Styles and Layout */
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-primary);
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
                 url('./../images/background.jpg');
     background-size: cover;
@@ -44,7 +43,6 @@ body::after {
     z-index: -1;
 }
 
-/* Header Styles */
 .charity-header {
     position: sticky;
     top: 0;
@@ -72,9 +70,58 @@ body::after {
     font-weight: bold;
     color: var(--charity-blue);
     margin: 0;
+    font-family: var(--font-primary);
 }
 
-/* Header Responsive Design */
+.btn {
+    font-family: var(--font-primary);
+    font-weight: 400;
+}
+
+.footer-logo {
+    max-width: 200px;
+}
+
+.charity-footer {
+    font-family: var(--font-secondary);
+    font-weight: 300;
+    margin-top: auto;
+}
+
+.charity-footer h5 {
+    font-family: var(--font-primary);
+    font-weight: 700;
+}
+
+.charity-footer .btn-charity-yellow {
+    background-color: var(--charity-yellow);
+    border-color: var(--charity-yellow);
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.charity-footer .btn-charity-yellow:hover {
+    background-color: #e5c400;
+    border-color: #e5c400;
+    color: var(--text-dark);
+}
+
+.charity-footer .btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.charity-footer a {
+    transition: color var(--transition-fast);
+}
+
+.charity-footer a:hover {
+    color: var(--charity-yellow) !important;
+}
+
+.border-charity-yellow {
+    border-color: var(--charity-yellow) !important;
+}
+
 @media (max-width: 576px) {
     .header-content {
         flex-direction: column;
@@ -96,7 +143,6 @@ body::after {
     }
 }
 
-/* Game Container */
 .game-container {
     max-width: var(--game-container-width);
     background: var(--bg-white);
@@ -112,7 +158,6 @@ body::after {
     position: relative;
 }
 
-/* Mobile Responsive Adjustments */
 @media (max-width: 480px) {
     .game-container {
         margin-top: 0.5rem;
@@ -129,7 +174,6 @@ body::after {
     }
 }
 
-/* Screen Management */
 .screen {
     position: absolute;
     top: 0;
@@ -152,7 +196,6 @@ body::after {
     z-index: var(--z-overlay);
 }
 
-/* Loading Screen */
 .loading-screen {
     position: fixed;
     top: 0;
@@ -188,7 +231,6 @@ body::after {
     animation: spin 1s linear infinite;
 }
 
-/* Responsive Design */
 @media (max-width: 480px) {
     .game-container {
         margin: 1rem;
@@ -215,14 +257,12 @@ body::after {
     }
 }
 
-/* Focus Styles for Accessibility */
 button:focus,
 .water-drop:focus {
     outline: 3px solid var(--charity-blue);
     outline-offset: 2px;
 }
 
-/* Utility Classes */
 .hidden {
     display: none !important;
 }
@@ -231,7 +271,6 @@ button:focus,
     animation: fadeIn var(--transition-slow) ease-in;
 }
 
-/* Desktop Side Content Layout */
 .main-content-wrapper {
     min-height: calc(100vh - 100px);
     padding: 2rem 0;
@@ -252,7 +291,6 @@ button:focus,
     padding-left: 1.5rem;
 }
 
-/* Desktop Side Content Image Styling */
 .side-content img {
     max-height: 200px;
     object-fit: cover;
@@ -267,7 +305,6 @@ button:focus,
     font-size: 0.875rem;
 }
 
-/* Side Content Cards */
 .impact-card,
 .community-card,
 .before-after-card,
@@ -295,7 +332,6 @@ button:focus,
     border-left: 4px solid var(--charity-blue);
 }
 
-/* Ensure proper spacing for side content */
 @media (min-width: 1200px) {
     .game-container {
         margin-top: 0;
@@ -307,7 +343,6 @@ button:focus,
     }
 }
 
-/* Responsive Adjustments */
 @media (max-width: 1199px) {
     .side-content {
         padding: 0 0.5rem;

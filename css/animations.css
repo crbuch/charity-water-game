@@ -1,6 +1,4 @@
-/* Animations and Keyframes */
 
-/* Drop Animations */
 @keyframes fall {
     from {
         top: -50px;
@@ -36,7 +34,6 @@
     }
 }
 
-/* Score and Effect Animations */
 @keyframes scoreFloat {
     0% {
         transform: translateY(0);
@@ -59,7 +56,6 @@
     }
 }
 
-/* Screen and UI Animations */
 @keyframes popupAppear {
     from {
         transform: scale(0.8);
@@ -89,7 +85,6 @@
     }
 }
 
-/* Loading Animations */
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -108,7 +103,6 @@
     }
 }
 
-/* Game Effect Animations */
 @keyframes shake {
     0%, 100% {
         transform: translateX(0);
@@ -145,7 +139,6 @@
     }
 }
 
-/* Achievement Animation */
 @keyframes achievementSlideIn {
     0% {
         transform: translateY(-100px);
@@ -172,7 +165,6 @@
     }
 }
 
-/* Transition Classes */
 .slide-in-left {
     animation: slideInLeft 0.5s ease-out;
 }
@@ -233,7 +225,6 @@
     }
 }
 
-/* Utility Animation Classes */
 .animate-pulse {
     animation: pulse 2s infinite;
 }
@@ -250,7 +241,6 @@
     animation: shake 0.5s ease-in-out;
 }
 
-/* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

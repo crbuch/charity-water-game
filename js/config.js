@@ -1,12 +1,50 @@
 // Game Configuration and Constants
 window.GameConfig = {
-    // Game Settings
+    // Difficulty Modes
+    DIFFICULTY_MODES: {
+        EASY: {
+            name: "Easy",
+            description: "More time, slower drops, more lives",
+            GAME_DURATION: 45, // seconds
+            MAX_LIVES: 5,
+            DROP_SPAWN_RATE: 1000, // milliseconds
+            CLEAN_DROP_RATIO: 0.8, // 80% clean, 20% polluted
+            DROP_FALL_SPEED: 4000, // milliseconds to fall from top to bottom
+            POINTS_PER_CLEAN_DROP: 10,
+            WIN_CONDITION: 150 // points needed to win
+        },
+        NORMAL: {
+            name: "Normal",
+            description: "Balanced gameplay",
+            GAME_DURATION: 30, // seconds
+            MAX_LIVES: 3,
+            DROP_SPAWN_RATE: 750, // milliseconds
+            CLEAN_DROP_RATIO: 0.7, // 70% clean, 30% polluted
+            DROP_FALL_SPEED: 3000, // milliseconds to fall from top to bottom
+            POINTS_PER_CLEAN_DROP: 10,
+            WIN_CONDITION: 200 // points needed to win
+        },
+        HARD: {
+            name: "Hard",
+            description: "Fast-paced challenge",
+            GAME_DURATION: 20, // seconds
+            MAX_LIVES: 2,
+            DROP_SPAWN_RATE: 500, // milliseconds
+            CLEAN_DROP_RATIO: 0.6, // 60% clean, 40% polluted
+            DROP_FALL_SPEED: 2000, // milliseconds to fall from top to bottom
+            POINTS_PER_CLEAN_DROP: 15,
+            WIN_CONDITION: 250 // points needed to win
+        }
+    },
+    
+    // Default Settings (will be overridden by selected difficulty)
     GAME_DURATION: 30, // seconds
     MAX_LIVES: 3,
     DROP_SPAWN_RATE: 750, // milliseconds
     CLEAN_DROP_RATIO: 0.7, // 70% clean, 30% polluted
     DROP_FALL_SPEED: 3000, // milliseconds to fall from top to bottom
     POINTS_PER_CLEAN_DROP: 10,
+    WIN_CONDITION: 200, // points needed to win
     
     // Achievement Thresholds
     ACHIEVEMENT_THRESHOLDS: [50, 100, 200, 300, 500],

@@ -184,6 +184,107 @@
     margin-bottom: 1rem;
 }
 
+/* Difficulty Selection */
+.difficulty-selection {
+    background: var(--clean-water-light);
+    padding: 1rem;
+    border-radius: 10px;
+    border-top: 4px solid var(--charity-yellow);
+}
+
+.difficulty-btn {
+    transition: all var(--transition-normal);
+    border-radius: 8px;
+    padding: 0.75rem 0.25rem;
+    line-height: 1.2;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70px;
+    width: 100%;
+    white-space: nowrap;
+    position: relative;
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Easy button - green */
+.difficulty-btn[data-difficulty="EASY"] {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+
+.difficulty-btn[data-difficulty="EASY"]:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.difficulty-btn[data-difficulty="EASY"]:focus {
+    background-color: #218838;
+    border-color: #1e7e34;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+/* Normal button - blue (default active) */
+.difficulty-btn[data-difficulty="NORMAL"] {
+    background-color: var(--charity-blue);
+    border-color: var(--charity-blue);
+    color: white;
+}
+
+.difficulty-btn[data-difficulty="NORMAL"]:hover {
+    background-color: var(--charity-blue-dark);
+    border-color: var(--charity-blue-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.difficulty-btn[data-difficulty="NORMAL"]:focus {
+    background-color: var(--charity-blue-dark);
+    border-color: var(--charity-blue-dark);
+    box-shadow: 0 0 0 0.2rem rgba(2, 136, 209, 0.25);
+}
+
+/* Hard button - red */
+.difficulty-btn[data-difficulty="HARD"] {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+.difficulty-btn[data-difficulty="HARD"]:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.difficulty-btn[data-difficulty="HARD"]:focus {
+    background-color: #c82333;
+    border-color: #bd2130;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Active state override - keep original color but add border */
+.difficulty-btn.active {
+    border: 3px solid var(--charity-yellow) !important;
+    box-shadow: 0 0 0 2px rgba(254, 221, 0, 0.3) !important;
+}
+
+/* Ensure text stays visible */
+.difficulty-btn small {
+    font-size: 0.7rem;
+    opacity: 0.9;
+    margin-top: 2px;
+}
+
 /* Responsive Pause Screen */
 @media (max-height: 600px) {
     .pause-screen {
@@ -251,5 +352,42 @@
     .content-bottom .d-grid {
         min-height: 100px;
         gap: 0.5rem;
+    }
+}
+
+/* Responsive adjustments for difficulty buttons */
+@media (max-width: 576px) {
+    .difficulty-btn {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.25rem;
+        min-height: 60px;
+    }
+    
+    .difficulty-btn small {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .difficulty-selection .row {
+        margin: 0 -2px;
+    }
+    
+    .difficulty-selection .col-4 {
+        padding: 0 2px;
+    }
+    
+    .difficulty-btn {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.1rem;
+        min-height: 55px;
+    }
+    
+    .difficulty-btn strong {
+        font-size: 0.8em;
+    }
+    
+    .difficulty-btn small {
+        font-size: 0.6rem;
     }
 }

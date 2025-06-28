@@ -10,8 +10,12 @@ window.GameState = {
         dropsCollected: 0,
         totalDropsSpawned: 0,
         achievementsUnlocked: [],
-        currentScreen: GameStates.LOADING
+        currentScreen: GameStates.LOADING,
+        difficulty: 'NORMAL'
     },
+
+    // Active difficulty settings
+    activeDifficulty: GameConfig.DIFFICULTY_MODES.NORMAL,
 
     // Game timers and intervals
     timers: {
@@ -25,13 +29,27 @@ window.GameState = {
         this.reset();
     },
 
+    // Set difficulty mode
+    setDifficulty(difficultyKey) {
+        if (GameConfig.DIFFICULTY_MODES[difficultyKey]) {
+            this.current.difficulty = difficultyKey;
+            this.activeDifficulty = GameConfig.DIFFICULTY_MODES[difficultyKey];
+            
+            // Update current state with new difficulty settings
+            this.current.lives = this.activeDifficulty.MAX_LIVES;
+            this.current.timeLeft = this.activeDifficulty.GAME_DURATION;
+            
+            console.log(`Difficulty set to: ${this.activeDifficulty.name}`);
+        }
+    },
+
     // Reset game state to initial values
     reset() {
         this.current.isPlaying = false;
         this.current.isPaused = false;
         this.current.score = 0;
-        this.current.lives = GameConfig.MAX_LIVES;
-        this.current.timeLeft = GameConfig.GAME_DURATION;
+        this.current.lives = this.activeDifficulty.MAX_LIVES;
+        this.current.timeLeft = this.activeDifficulty.GAME_DURATION;
         this.current.dropsCollected = 0;
         this.current.totalDropsSpawned = 0;
         this.current.achievementsUnlocked = [];
@@ -42,6 +60,13 @@ window.GameState = {
     // Update score and return new score
     addScore(points) {
         this.current.score += points;
+        
+        // Check win condition
+        if (this.hasWon()) {
+            this.clearAllTimers();
+            if (window.Game) window.Game.endGame(true); // true indicates win
+        }
+        
         return this.current.score;
     },
 
@@ -98,6 +123,13 @@ window.GameState = {
             this.current.timeLeft--;
             if (callback) callback(this.current.timeLeft);
             
+            // Check win condition first
+            if (this.hasWon()) {
+                this.clearGameTimer();
+                if (window.Game) window.Game.endGame(true); // true indicates win
+                return;
+            }
+            
             if (this.current.timeLeft <= 0) {
                 this.clearGameTimer();
                 if (window.Game) window.Game.endGame();
@@ -110,7 +142,7 @@ window.GameState = {
             if (this.current.isPlaying && !this.current.isPaused) {
                 if (callback) callback();
             }
-        }, GameConfig.DROP_SPAWN_RATE);
+        }, this.activeDifficulty.DROP_SPAWN_RATE);
     },
 
     clearGameTimer() {
@@ -169,6 +201,11 @@ window.GameState = {
 
     isGameOver() {
         return this.current.lives <= 0 || this.current.timeLeft <= 0;
+    },
+
+    // Check if player has won (reached score goal)
+    hasWon() {
+        return this.current.score >= this.activeDifficulty.WIN_CONDITION;
     },
 
     canPause() {

@@ -1,6 +1,4 @@
-/* Reusable Components */
 
-/* Button Enhancements */
 .btn {
     transition: all var(--transition-normal);
     font-weight: 600;
@@ -17,7 +15,6 @@
     font-size: 1rem;
 }
 
-/* Cards and Containers */
 .feature-image {
     width: 100%;
     max-width: 300px;
@@ -64,7 +61,6 @@
     border-radius: 10px;
 }
 
-/* Stats and Preview Components */
 .game-stats-preview {
     background: var(--clean-water-light);
     border-top: 12px solid var(--charity-yellow);

@@ -58,6 +58,10 @@
     --z-overlay: 100;
     --z-popup: 200;
     --z-loading: 9999;
+    
+    /* Typography - Kazimir Font */
+    --font-primary: "kazimirtext", sans-serif;
+    --font-secondary: "kazimirtext-2", sans-serif;
 }
 
 /* Bootstrap Custom Colors */

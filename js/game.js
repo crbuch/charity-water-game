@@ -63,6 +63,12 @@ window.Game = {
         const button = event.target.closest('button');
         if (!button) return;
 
+        // Handle difficulty selection
+        if (button.classList.contains('difficulty-btn')) {
+            this.selectDifficulty(button);
+            return;
+        }
+
         switch(button.id) {
             case 'start-game-btn':
                 this.startGame();
@@ -125,6 +131,43 @@ window.Game = {
             const x = event.clientX;
             const y = event.clientY;
             DropManager.createRippleEffect(x, y);
+        }
+    },
+
+    // Handle difficulty selection
+    selectDifficulty(button) {
+        // Remove active class from all difficulty buttons
+        document.querySelectorAll('.difficulty-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Add active class to selected button
+        button.classList.add('active');
+        
+        // Get difficulty from data attribute
+        const difficulty = button.dataset.difficulty;
+        
+        // Set difficulty in game state
+        GameState.setDifficulty(difficulty);
+        
+        // Update stats preview
+        this.updateStatsPreview();
+    },
+    
+    // Update stats preview based on selected difficulty
+    updateStatsPreview() {
+        const timeDisplay = document.querySelector('#time-display');
+        const livesDisplay = document.querySelector('#lives-display');
+        const goalDisplay = document.querySelector('#goal-display');
+        
+        if (timeDisplay) {
+            timeDisplay.textContent = `${GameState.activeDifficulty.GAME_DURATION} seconds`;
+        }
+        if (livesDisplay) {
+            livesDisplay.textContent = `${GameState.activeDifficulty.MAX_LIVES} lives`;
+        }
+        if (goalDisplay) {
+            goalDisplay.textContent = `${GameState.activeDifficulty.WIN_CONDITION} to win`;
         }
     },
 
@@ -258,10 +301,13 @@ window.Game = {
     },
 
     // End current game
-    endGame() {
-        console.log('Ending game...');
+    endGame(isWin = false) {
+        console.log(isWin ? 'Player won!' : 'Game over');
         GameState.stop();
         AchievementManager.hideAchievement();
+        
+        // Store win status for game over screen
+        GameState.current.isWin = isWin;
         
         if (ScreenManager.getCurrentScreen() !== 'start') {
             ScreenManager.showScreen('gameOver');

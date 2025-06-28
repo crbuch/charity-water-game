@@ -30,7 +30,7 @@ window.DropManager = {
             if (drop.parentNode && !drop.classList.contains(GameClasses.DROP_CLICKED)) {
                 this.handleDropMissed(drop);
             }
-        }, GameConfig.DROP_FALL_SPEED);
+        }, GameState.activeDifficulty.DROP_FALL_SPEED);
 
         return drop;
     },
@@ -41,7 +41,7 @@ window.DropManager = {
         drop.className = GameClasses.WATER_DROP;
         
         // Determine if drop is clean or polluted
-        const isClean = Math.random() < GameConfig.CLEAN_DROP_RATIO;
+        const isClean = Math.random() < GameState.activeDifficulty.CLEAN_DROP_RATIO;
         drop.classList.add(isClean ? GameClasses.CLEAN_DROP : GameClasses.POLLUTED_DROP);
         drop.setAttribute('data-type', isClean ? 'clean' : 'polluted');
         
@@ -61,7 +61,7 @@ window.DropManager = {
 
     // Setup drop falling animation
     setupDropAnimation(drop) {
-        drop.style.animationDuration = GameConfig.DROP_FALL_SPEED + 'ms';
+        drop.style.animationDuration = GameState.activeDifficulty.DROP_FALL_SPEED + 'ms';
     },
 
     // Add click and touch events to drop
@@ -106,7 +106,7 @@ window.DropManager = {
 
     // Handle clean drop collection
     handleCleanDropCollected(drop) {
-        const points = GameConfig.POINTS_PER_CLEAN_DROP;
+        const points = GameState.activeDifficulty.POINTS_PER_CLEAN_DROP;
         GameState.addScore(points);
         GameState.collectDrop();
         
